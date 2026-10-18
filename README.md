@@ -13,7 +13,7 @@ brew install unfriction-ai/tap/unfriction
 unfriction --version
 ```
 
-The initial release, **v0.1.0**, has been installed successfully using the [public Homebrew tap](https://github.com/unfriction-ai/homebrew-tap). For upgrading, testing, and removing the CLI, see the [tap's installation instructions](https://github.com/unfriction-ai/homebrew-tap#readme).
+The first published release is **v0.1.0**. For upgrading, testing, and removing the CLI, see the [Homebrew tap's installation instructions](https://github.com/unfriction-ai/homebrew-tap#readme).
 
 ## Direct downloads and verification
 
