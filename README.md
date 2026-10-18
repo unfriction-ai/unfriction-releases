@@ -1,8 +1,8 @@
 # unfriction — public releases
 
-This repository publishes **versioned compiled binaries** of **unfriction**, an experimental CLI for inspecting recorded AI coding-agent runs.
+This repository distributes **versioned compiled binaries** of **unfriction**, a command-line tool for inspecting recorded AI coding-agent executions.
 
-It is intentionally **not the application source repository**. The source and its development history are private; this public repository hosts release archives, checksums, and release notes through **[GitHub Releases](https://github.com/unfriction-ai/unfriction-releases/releases)**. Consequently, the repository's Code tab can contain little more than this README while its Releases page contains the distributable files.
+It is intentionally **not the application source repository**. The application source and its development history are private. Public binary archives, checksums, and release notes are available through **[GitHub Releases](https://github.com/unfriction-ai/unfriction-releases/releases)**. The Code tab can therefore contain little more than this README while the Releases page hosts downloadable artifacts.
 
 ## Install with Homebrew (recommended)
 
@@ -11,33 +11,36 @@ On an Apple Silicon or Intel Mac with [Homebrew](https://brew.sh/):
 ```sh
 brew install unfriction-ai/tap/unfriction
 unfriction --version
+unfriction inspect --help
 ```
 
-The first published release is **v0.1.0**. For upgrading, testing, and removing the CLI, see the [Homebrew tap's installation instructions](https://github.com/unfriction-ai/homebrew-tap#readme).
+See the [Homebrew tap](https://github.com/unfriction-ai/homebrew-tap) for upgrading, testing, and uninstalling.
 
 ## Direct downloads and verification
 
-The v0.1.0 release is packaged as:
+Visit the [latest release](https://github.com/unfriction-ai/unfriction-releases/releases/latest) or [all releases](https://github.com/unfriction-ai/unfriction-releases/releases) and download the archive matching your macOS architecture.
 
-| macOS architecture | Release archive |
+Release archives follow these patterns (replace `<version>` with the selected release version, without the leading `v`):
+
+| macOS architecture | Archive name pattern |
 | --- | --- |
-| Apple Silicon (arm64) | `unfriction_0.1.0_darwin_arm64.tar.gz` |
-| Intel (amd64) | `unfriction_0.1.0_darwin_amd64.tar.gz` |
+| Apple Silicon (arm64) | `unfriction_<version>_darwin_arm64.tar.gz` |
+| Intel (amd64) | `unfriction_<version>_darwin_amd64.tar.gz` |
 
-The release also includes `checksums.txt` with SHA-256 hashes. Download the archive for your architecture and the checksum file from the [v0.1.0 release](https://github.com/unfriction-ai/unfriction-releases/releases/tag/v0.1.0), then verify the downloaded archive against the published checksum:
+Each release also provides `checksums.txt`, containing SHA-256 hashes of its archives. Download it alongside the selected archive and calculate its checksum:
 
 ```sh
-shasum -a 256 unfriction_0.1.0_darwin_arm64.tar.gz
+shasum -a 256 path/to/downloaded-archive.tar.gz
 ```
 
-Compare the output to the matching entry in `checksums.txt` (or the [Homebrew formula](https://github.com/unfriction-ai/homebrew-tap/blob/main/Formula/unfriction.rb) for the currently published version). Intel users should substitute the `darwin_amd64` archive. A mismatch means the file should not be installed.
+Compare the hash with the matching filename's entry in `checksums.txt`. If they differ, do **not** install that archive. The [Homebrew formula](https://github.com/unfriction-ai/homebrew-tap/blob/main/Formula/unfriction.rb) contains the checksum used by Homebrew for its currently configured release.
 
-An archive contains the `unfriction` executable. Homebrew is the recommended way to put it on your PATH and manage upgrades.
+Archives contain the `unfriction` executable. Homebrew is recommended for installation, PATH management, and upgrades.
 
-## Versioning and availability
+## Versions, features, and source
 
-unfriction uses **Semantic Versioning** with releases generated from Conventional Commits. The release process publishes macOS arm64/amd64 binaries and their checksums without exposing the private source tree or commit history. GitHub's auto-generated source snapshots of **this distribution repository** are not the application's source.
+unfriction follows **Semantic Versioning**; release versions are determined from Conventional Commits. Supported trace formats and inspection capabilities may change between versions. Read the [latest release notes](https://github.com/unfriction-ai/unfriction-releases/releases/latest) for changes and run `unfriction inspect --help` for usage details in the installed binary.
 
-The current walking skeleton supports inspecting a single Codex turn without tool calls; later trace formats and acquisition analysis will be released as those features are implemented.
+The public distribution process does **not** publish the private source tree or its commit history. GitHub-generated source snapshots of this distribution repository are **not** the application's source code.
 
-For installation and usage, see the [Homebrew tap](https://github.com/unfriction-ai/homebrew-tap). For available published versions, use the [Releases page](https://github.com/unfriction-ai/unfriction-releases/releases).
+For installation instructions, see the [Homebrew tap](https://github.com/unfriction-ai/homebrew-tap).
